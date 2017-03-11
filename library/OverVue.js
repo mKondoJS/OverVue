@@ -24,7 +24,7 @@ export class Store {
 export default function install (_Vue) {
   if (Vue) {
     console.error(
-      '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+      '[OverVue] already installed. Vue.use(OverVue) should be called only once.'
     )
     return
   }
