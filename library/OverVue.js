@@ -1,26 +1,56 @@
 import Rx from 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import applyMixin from './mixin';
+import reducer from '../src/store/reducer'
 const isObservable = obs => obs instanceof Observable;
-
-const action$ = new Rx.BehaviorSubject();
 
 let Vue;
 
 export class Store {
   constructor(initialState = {}) {  
-    Object.keys(initialState).forEach(key => {
-      this[key] = initialState[key];
-    })
+    // Object.keys(initialState).forEach(key => {
+    //   this[key] = initialState[key];
+    // })
+    this.state = initialState;
+    this.motherStream$ = new Rx.BehaviorSubject();
+    // this.store = {};
   }                         
-  initializeStore(initialState) {
-    action$
-    .flatMap((action) => isObservable(action) ? action : Observable.from([action]))
-    .startWith(initState)
-    .scan(reducer);
+  createStateStream(state = this.state) {
+    return this.motherStream$
+      .flatMap((action) => {console.log('flat map', state); return isObservable(action) ? action : Observable.from([action])})
+      .startWith(state)
+      // .scan(reducer);
+      .scan((state, action) => {
+        console.log('action.type:', action);
+        console.log('stizzy state', state, 'accity ack', action);
+        if (action) {
+          reducer(this.state, action);
+        }
+      });
+    // return this.motherStream$;
   }
-};
-
+  actionCreator(func) {
+  return function(...args) {
+    console.log('second level of AC!!!', ...args);
+    const action = func.call(null, ...args);
+    console.log('this is the second this, it is action', action);
+    this.motherStream$.next(action);
+    if (isObservable(action.payload)) {
+      console.log('is in isObservable');
+      this.motherStream$.next(action.payload);
+    }
+    console.log(this.motherStream$);
+    return action;
+    }.bind(this)
+  } 
+}
+  // createStore(streamCollection) {
+  //   this.store = streamCollection;
+  // }
+  // addToStore(streamCollection) {
+  //   this.store = Object.assign({}, this.store, streamCollection);
+  // }
+  
 export default function install (_Vue) {
   if (Vue) {
     console.error(

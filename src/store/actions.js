@@ -1,8 +1,10 @@
-import { actionCreator } from './store';
+import store from './store';
 import { Observable } from 'rxjs/Rx';
 import { map } from 'lodash';
 
-export const loadGithubFollowers = actionCreator((payload) => {
+console.log(store);
+
+export const loadGithubFollowers = store.actionCreator((payload) => {
   const url = `https://codesmith-precourse.firebaseio.com/instagram/-JqL35o8u6t3dTQaFXSV.json`;
   return {
     type: 'GITHUB_FOLLOWERS_LOADING',
@@ -19,7 +21,11 @@ export const loadGithubFollowers = actionCreator((payload) => {
   };
 });
 
-export const changeName = actionCreator((payload) => ({
+export const changeName = store.actionCreator((payload) => ({
   type: 'NAME_CHANGED',
   payload
 }));
+
+export const reName = (name) => {
+  {}
+}

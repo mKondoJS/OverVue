@@ -2,30 +2,41 @@
   <div>
     <h1>{{ msg }}</h1>
     <!--<!--<button @click="checkStore">Button</button>-->
-    <button @click="username">b2</button>-->
-    <h3>{{ counter }}</h3>
+    <button @click="handleChangeName">Harry</button>-->
+    <button @click="handleChangeName">Sally</button>-->
+    <h3>{{ name }}</h3>
 </div>
 </template>
 
 <script>
 import store from '../store/store';
+import reducer from '../store/reducer';
+import { changeName } from '../store/actions';
+const loginState$ = store.createStateStream();
+loginState$.subscribe(state => console.log('here is our hello state', state));
+
 
 export default {
   name: 'hello',
   data () {
     return {
       msg: 'ok',
-      counter: 0
+      counter: 0,
+      name: store.state.name
     }
   },
   methods: {
     username: function() {
-      console.log('this is the console log', store);
-      this.msg = store.state.name;
+      // this.msg = store.state.name;
     },
     setCounter: function() {
       store.state.counter += 1;
       this.counter = store.state.counter;
+    },
+    handleChangeName: function() {
+      changeName('Strider');
+      console.log('in handle change name, this is the store', store);
+      this.name = store.state.name;
     }
   },
   computed: {
