@@ -7,7 +7,6 @@ export default function (Vue) {
    */
 
   function overVueInit () {
-    console.log('we mixin it up');
     const options = this.$options
     // store injection
     if (options.store) {
