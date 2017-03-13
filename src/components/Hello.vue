@@ -1,10 +1,14 @@
 <template>
   <div>
     <h1>{{ msg }}</h1>
-    <!--<!--<button @click="checkStore">Button</button>-->
-    <button @click="handleChangeName">Harry</button>-->
-    <button @click="handleChangeName">Sally</button>-->
-    <h3>{{ getName }}</h3>
+    <button @click="handleChangeName">Sam</button>
+    <button @click="handleChangeName">Merry</button>
+    <button @click="handleChangeName">Pippin</button>
+    <div>
+      <h3>{{ name }}</h3>
+      <img :src="img">
+    </div>
+
 </div>
 </template>
 
@@ -12,8 +16,7 @@
 import store from '../store/store';
 import mutate from '../store/mutate';
 import { changeName } from '../store/actions';
-const loginState$ = store.createStateStream();
-loginState$.subscribe(state => console.log('here is our hello state', state));
+store.createStateStream().subscribe(state => console.log('here is our hello state', state));
 
 
 export default {
@@ -21,12 +24,9 @@ export default {
   data () {
     return {
       msg: 'ok',
-      counter: 0,
-      name: store.state.name
+      name: store.state.name,
+      img: store.state.img,
     }
-  },
-  computed: {
-    
   },
   methods: {
     username: function() {
@@ -36,16 +36,13 @@ export default {
       store.state.counter += 1;
       this.counter = store.state.counter;
     },
-    handleChangeName: function() {
-      changeName('Strider');
+    handleChangeName: function(e) {
+      changeName(e.srcElement.innerHTML);
       console.log('in handle change name, this is the store', store);
       this.name = store.state.name;
       console.log('this is our getter', store.getters.getName);
-    }
+    },
   },
-  computed: {
-    
-  }
 }
 </script>
 
