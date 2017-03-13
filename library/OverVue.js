@@ -1,7 +1,7 @@
 import Rx from 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import applyMixin from './mixin';
-import reducer from '../src/store/reducer'
+import mutate from '../src/store/mutate'
 const isObservable = obs => obs instanceof Observable;
 
 let Vue;
@@ -11,27 +11,24 @@ export class Store {
     // Object.keys(initialState).forEach(key => {
     //   this[key] = initialState[key];
     // })
-    this.state = initialState;
+    this.state = initialState.state;
     this.motherStream$ = new Rx.BehaviorSubject();
+    this.getters = initialState.getters;
     // this.store = {};
   }                         
   createStateStream(state = this.state) {
     return this.motherStream$
       .flatMap((action) => {console.log('flat map', state); return isObservable(action) ? action : Observable.from([action])})
       .startWith(state)
-      // .scan(reducer);
       .scan((state, action) => {
         console.log('action.type:', action);
         console.log('stizzy state', state, 'accity ack', action);
-        if (action) {
-          reducer(this.state, action);
-        }
+        if (action) mutate(this.state, action);
       });
-    // return this.motherStream$;
   }
   actionCreator(func) {
   return function(...args) {
-    console.log('second level of AC!!!', ...args);
+    console.log('second level of ActionCreator!!!', ...args);
     const action = func.call(null, ...args);
     console.log('this is the second this, it is action', action);
     this.motherStream$.next(action);
