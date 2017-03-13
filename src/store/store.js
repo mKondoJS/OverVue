@@ -11,8 +11,9 @@ let store;
 export default store = new Store({
   state: {
     name: 'Bilbo',
+    img: '',
   },
   getters: {
     getName: state => state.name,
-  }
+  },
 });
