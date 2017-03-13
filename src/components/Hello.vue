@@ -4,13 +4,13 @@
     <!--<!--<button @click="checkStore">Button</button>-->
     <button @click="handleChangeName">Harry</button>-->
     <button @click="handleChangeName">Sally</button>-->
-    <h3>{{ name }}</h3>
+    <h3>{{ getName }}</h3>
 </div>
 </template>
 
 <script>
 import store from '../store/store';
-import reducer from '../store/reducer';
+import mutate from '../store/mutate';
 import { changeName } from '../store/actions';
 const loginState$ = store.createStateStream();
 loginState$.subscribe(state => console.log('here is our hello state', state));
@@ -25,6 +25,9 @@ export default {
       name: store.state.name
     }
   },
+  computed: {
+    
+  },
   methods: {
     username: function() {
       // this.msg = store.state.name;
@@ -37,6 +40,7 @@ export default {
       changeName('Strider');
       console.log('in handle change name, this is the store', store);
       this.name = store.state.name;
+      console.log('this is our getter', store.getters.getName);
     }
   },
   computed: {

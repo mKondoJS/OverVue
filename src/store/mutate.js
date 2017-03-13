@@ -1,5 +1,5 @@
 
-export default function reducer(state, action) {
+export default function mutate(state, action) {
   switch (action.type) {
     // case 'GITHUB_FOLLOWERS_LOADING':
     //   return {
@@ -13,9 +13,9 @@ export default function reducer(state, action) {
     //     users: action.payload,
     //   };
     case 'NAME_CHANGED':
-      console.log('in reducer name changed', action.payload, 'state in reducer:', state);
+      console.log('in mutate name changed', action.payload, 'state in mutate:', state);
       state.name = action.payload;
-      console.log('after reducer state', state);
+      console.log('after mutated state', state);
       return state;
   }
 }

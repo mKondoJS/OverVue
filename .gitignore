@@ -3,7 +3,6 @@ node_modules/
 dist/
 npm-debug.log
 yarn-error.log
-build/
 .postcssrc.js
 .editorconfig
 static/

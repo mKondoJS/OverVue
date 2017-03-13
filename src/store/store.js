@@ -9,9 +9,10 @@ Vue.use(OverVue);
 let store;
 
 export default store = new Store({
-  // state: {
-  //   name: 'Bilbo',
-  //   counter: 0
-  // },
-  name: 'Bilbo'
+  state: {
+    name: 'Bilbo',
+  },
+  getters: {
+    getName: state => state.name,
+  }
 });
