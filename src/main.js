@@ -4,9 +4,9 @@ import Vue from 'vue';
 import App from './App.vue';
 import store from './store/store';
 
-
 Vue.config.productionTip = false;
 
+store.createStateStream().subscribe(state => console.log('Initial state', state));
 
 /* eslint-disable no-new */
 new Vue({

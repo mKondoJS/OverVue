@@ -7,6 +7,7 @@ let store;
 export default store = new Store({
   state: {
     name: 'Frodo',
+    town: 'Hobbiton',
     img: './src/assets/frodo.jpg',
   },
   getters: {

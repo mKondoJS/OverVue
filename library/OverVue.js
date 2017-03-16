@@ -2,7 +2,6 @@ import Rx from 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import applyMixin from './mixin';
 import mutate from '../src/store/mutate';
-
 const isObservable = obs => obs instanceof Observable;
 
 let Vue;
@@ -41,7 +40,6 @@ export class Store {
     }.bind(this);
   }
 }
-
 
 export default function install(_Vue) {
   if (Vue) {

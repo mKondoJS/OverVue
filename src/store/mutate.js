@@ -18,8 +18,13 @@ export default function mutate(state, action) {
       return state;
     case 'IMG_CHANGED':
       console.log('in mutate img changed', action.payload.toLowerCase(), 'state in mutate:', state);
-      state.img = './src/assets/' + action.payload.toLowerCase() + '.jpg';
+      state.img = './assets/' + action.payload.toLowerCase() + '.jpg';
       console.log('after mutated img state', state);
+      return state;
+    case 'TOWN_CHANGED':
+      console.log('in mutate town changed', action.payload.toLowerCase(), 'state in mutate:', state);
+      state.town = action.payload;
+      console.log('after mutated town state', state);
       return state;
   }
 }
