@@ -1,6 +1,6 @@
-import store from './store';
-import { Observable } from 'rxjs/Rx';
 import { map } from 'lodash';
+import { Observable } from 'rxjs/Rx';
+import store from './store';
 
 console.log(store);
 
@@ -9,23 +9,20 @@ export const loadGithubFollowers = store.actionCreator((payload) => {
   return {
     type: 'GITHUB_FOLLOWERS_LOADING',
     payload: Observable.ajax(url)
-      .map((xhr) => {
-        return xhr.response.map(el => {return el;})
-      })
-      .map((followers) => {
-        return {
+      .map(xhr => xhr.response.map(el => el))
+      .map(followers => ({
         type: 'GITHUB_FOLLOWERS_LOADED',
-        payload: followers
-        };
-    }),
+        payload: followers,
+      })),
   };
 });
 
-export const changeName = store.actionCreator((payload) => ({
+export const changeName = store.actionCreator(payload => ({
   type: 'NAME_CHANGED',
-  payload
+  payload,
 }));
 
-export const reName = (name) => {
-  {}
-}
+export const changeImg = store.actionCreator(payload => ({
+  type: 'IMG_CHANGED',
+  payload,
+}));
