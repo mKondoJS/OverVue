@@ -1,4 +1,3 @@
-
 export default function mutate(state, action) {
   switch (action.type) {
     // case 'GITHUB_FOLLOWERS_LOADING':

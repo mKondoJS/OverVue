@@ -4,8 +4,10 @@
     <button @click="handleChangeName">Sam</button>
     <button @click="handleChangeName">Merry</button>
     <button @click="handleChangeName">Pippin</button>
-    <button @click="handleChangeTown">Bree</button>
-
+    <div>
+      <button @click="handleChangeTown">Bree</button>
+      <button @click="handleChangeTown">Edoras</button>
+    </div>
     <div id="hobbit">
       <h3>{{ hobbit }}</h3>
       <h3>{{  town }}</h3>
@@ -13,29 +15,32 @@
     <div id="stateStore">
       State Store:
       <h3>{{ store }}</h3>
+      <img :src="img" alt="">
     </div>
-
 </div>
 </template>
 
 <script>
-//import store from '../store/store';
-//import mutate from '../store/mutate';
-import { changeName, changeImg, changeTown } from '../store/actions';
+import store from '../store/store';
+import { changeName, changeImg, changeImg } from '../store/actions';
 
-
+store.createStateStream().subscribe(state => console.log('Initial state', state));
 
 export default {
   data () {
     return {
       msg: 'InsidaVue',
-      //name: this.$store.state.name,
       store: this.$store.state
     }
   },
   methods: {
     handleChangeName: function(e) {
       changeName(e.srcElement.innerHTML);
+  },
+  methods: {
+    handleChangeName: function(e) {
+      changeName(e.srcElement.innerHTML);
+      changeImg(this.name);
     },
     handleChangeTown: function(e) {
       changeTown(e.srcElement.innerHTML);
@@ -49,9 +54,13 @@ export default {
     town: function() {
       console.log('fired town');
       return this.$store.state.town;
+    },
+    img: function() {
+      return this.$store.state.img;
     }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -76,5 +85,9 @@ a {
 
 #stateStore {
   color: red;
+<<<<<<< HEAD
 }
+=======
+  }
+>>>>>>> d5e38531a6c248808739c7ff2a2f1d1c0967a21e
 </style>

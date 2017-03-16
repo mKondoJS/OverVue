@@ -16,7 +16,7 @@ export class Store {
 
   createStateStream(state = this.state) {
     return this.motherStream$
-      .flatMap((action) => {console.log('flat map', state); return isObservable(action) ? action : Observable.from([action])})
+      .flatMap((action) => { console.log('flat map', state); return isObservable(action) ? action : Observable.from([action]); })
       .startWith(state)
       .scan((state, action) => {
         console.log('action.type:', action);
@@ -37,16 +37,10 @@ export class Store {
       }
       console.log(this.motherStream$);
       return action;
-      }.bind(this);
+    }.bind(this);
   }
 }
-  // createStore(streamCollection) {
-  //   this.store = streamCollection;
-  // }
-  // addToStore(streamCollection) {
-  //   this.store = Object.assign({}, this.store, streamCollection);
-  // }
-  
+
 export default function install(_Vue) {
   if (Vue) {
     console.error(

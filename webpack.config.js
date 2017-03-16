@@ -2,7 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './client/src/main.js',
+  entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -22,10 +22,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets:['es2015', 'stage-2']
-        }
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
