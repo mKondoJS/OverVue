@@ -26,6 +26,12 @@ export const changeName = store.actionCreator((payload) => ({
   payload
 }));
 
-export const reName = (name) => {
-  {}
-}
+export const changeImg = store.actionCreator((payload) => ({
+  type: 'IMG_CHANGED',
+  payload
+}));
+
+export const changeTown = store.actionCreator((payload) => ({
+  type: 'TOWN_CHANGED',
+  payload
+}));

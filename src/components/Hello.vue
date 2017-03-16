@@ -4,45 +4,53 @@
     <button @click="handleChangeName">Sam</button>
     <button @click="handleChangeName">Merry</button>
     <button @click="handleChangeName">Pippin</button>
-    <div>
-      <h3>{{ name }}</h3>
-      <img :src="img">
+    <button @click="handleChangeTown">Bree</button>
+
+    <div id="hobbit">
+      <h3>{{ hobbit }}</h3>
+      <h3>{{  town }}</h3>
+    </div>
+    <div id="stateStore">
+      State Store:
+      <h3>{{ store }}</h3>
     </div>
 
 </div>
 </template>
 
 <script>
-import store from '../store/store';
-import mutate from '../store/mutate';
-import { changeName } from '../store/actions';
-store.createStateStream().subscribe(state => console.log('here is our hello state', state));
+//import store from '../store/store';
+//import mutate from '../store/mutate';
+import { changeName, changeImg, changeTown } from '../store/actions';
+
 
 
 export default {
-  name: 'hello',
   data () {
     return {
-      msg: 'ok',
-      name: store.state.name,
-      img: store.state.img,
+      msg: 'InsidaVue',
+      //name: this.$store.state.name,
+      store: this.$store.state
     }
   },
   methods: {
-    username: function() {
-      // this.msg = store.state.name;
-    },
-    setCounter: function() {
-      store.state.counter += 1;
-      this.counter = store.state.counter;
-    },
     handleChangeName: function(e) {
       changeName(e.srcElement.innerHTML);
-      console.log('in handle change name, this is the store', store);
-      this.name = store.state.name;
-      console.log('this is our getter', store.getters.getName);
     },
+    handleChangeTown: function(e) {
+      changeTown(e.srcElement.innerHTML);
+    }
   },
+  computed: {
+    hobbit: function() {
+      console.log('fired hobbit');
+      return this.$store.state.name;
+    },
+    town: function() {
+      console.log('fired town');
+      return this.$store.state.town;
+    }
+  }
 }
 </script>
 
@@ -64,5 +72,9 @@ li {
 
 a {
   color: #42b983;
+}
+
+#stateStore {
+  color: red;
 }
 </style>

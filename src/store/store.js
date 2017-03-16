@@ -10,8 +10,8 @@ let store;
 
 export default store = new Store({
   state: {
-    name: 'Bilbo',
-    img: '',
+    name: 'Frodo',
+    town: 'Hobbiton',
   },
   getters: {
     getName: state => state.name,
