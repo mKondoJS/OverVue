@@ -4,46 +4,60 @@
     <button @click="handleChangeName">Sam</button>
     <button @click="handleChangeName">Merry</button>
     <button @click="handleChangeName">Pippin</button>
-    <div>
+    <div id="hobbit">
       <h3>{{ name }}</h3>
-      <img :src="img">
     </div>
-
+    <div id="stateStore">
+      State Store:
+      <h3>{{ store }}</h3>
+      <img :src="img" alt="">
+    </div>
+     <input v-model="search">
+  <div v-if="results">
+    <h1>{{ results.term }}</h1>
+    <ul v-if="results.matches.length">
+      <li v-for="match in results.matches">
+        <a :href="match.url">{{ match.title }}</a>
+        <p>{{ match.description }}</p>
+      </li>
+    </ul>
+    <p v-else>
+      No matches found.
+    </p>
+  </div>
 </div>
 </template>
 
 <script>
 import store from '../store/store';
-import mutate from '../store/mutate';
-import { changeName } from '../store/actions';
-store.createStateStream().subscribe(state => console.log('here is our hello state', state));
+import { changeName, changeImg } from '../store/actions';
 
+store.createStateStream().subscribe(state => console.log('Initial state', state));
 
 export default {
-  name: 'hello',
-  data () {
+  data() {
     return {
-      msg: 'ok',
+      msg: 'InsidaVue',
       name: store.state.name,
-      img: store.state.img,
-    }
+      store: store.state,
+      img: './src/assets/pippin.jpg',
+    };
   },
   methods: {
-    username: function() {
-      // this.msg = store.state.name;
-    },
     setCounter: function() {
       store.state.counter += 1;
       this.counter = store.state.counter;
     },
     handleChangeName: function(e) {
       changeName(e.srcElement.innerHTML);
-      console.log('in handle change name, this is the store', store);
-      this.name = store.state.name;
-      console.log('this is our getter', store.getters.getName);
+      this.name = store.getters.getName(store.state);
+
+      changeImg(this.name);
+      this.img = store.state.img;
     },
   },
-}
+};
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -65,4 +79,8 @@ li {
 a {
   color: #42b983;
 }
+
+#stateStore {
+  color: red;
+  }
 </style>
