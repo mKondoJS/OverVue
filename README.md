@@ -30,7 +30,7 @@ import OverVue from 'overVue';
 
 Vue.use(OverVue);
 ```
-Next, in the file containing your root Vue instantiation, pass your mutate methods into createStateStream and subscribe to the store. Be sure to import your store and mutate files and set the store as a property in your root Vue instantiation. This will make the store accessible in all components. 
+Next, in the file containing your root Vue instantiation, pass your mutate methods into createStateStream and subscribe to the store. Be sure to import the relevant files and set the store as a property in your root Vue instantiation. This makes the store accessible in all components. 
 
 ```
 import store from './store';
@@ -47,7 +47,7 @@ const app = new Vue({
 ```
 ### Dispatch actions
 
-All actions will be emitted and mapped into OverVue's motherstream. Users simply call the *dispatchAction* method from the store and pass in a callback function, which will return an object containing type and payload to be used as state update instructions to the user-defined mutators. The following is a simple example of how to declare an action in OverVue:
+All dispatched actions will be emitted and mapped into OverVue's motherstream. Users simply call the *dispatchAction* method from the store and pass in a callback function, which will return an object containing type and payload to be used as state update instructions to the user-defined mutators. The following is a simple example of how to declare an action in OverVue:
 
 ```
 export const commitUsername = store.dispatchAction(payload => ({
