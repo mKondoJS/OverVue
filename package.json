@@ -1,8 +1,9 @@
 {
-  "name": "overvue",
+  "name": "overvuerx",
   "version": "1.0.8",
   "description": "A library providing Vue applications with 'asynchronous-first' state management",
   "author": "mKondoJS",
+  "main": "src/OverVue.js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,8 +18,7 @@
   },
   "dependencies": {
     "rxjs": "^5.2.0",
-    "rxjs-es": "^5.0.0-beta.12",
-    "webpack": "^2.3.2"
+    "rxjs-es": "^5.0.0-beta.12"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
@@ -28,6 +28,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.24.0",
     "babel-tape-runner": "^2.0.1",
-    "tape": "^4.6.3"
+    "tape": "^4.6.3",
+    "webpack": "^2.3.2"
   }
 }
