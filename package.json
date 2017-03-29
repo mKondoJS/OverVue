@@ -1,18 +1,23 @@
 {
-  "name": "overvue2",
-  "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "Jon McAlpine <j.g.mcalpine@gmail.com>",
-  "private": true,
+  "name": "overvue",
+  "version": "1.0.8",
+  "description": "A library providing Vue applications with 'asynchronous-first' state management",
+  "author": "mKondoJS",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mKondoJS/OverVue"
+  },
+  "bugs": {
+    "url": "https://github.com/mKondoJS/OverVue/issues"
+  },
+  "homepage": "https://github.com/mKondoJS/OverVue#readme",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "test": "babel-tape-runner test/overVueTest.js"
   },
   "dependencies": {
     "rxjs": "^5.2.0",
-    "rxjs-es": "^5.0.0-beta.12",
-    "vue": "^2.2.2"
+    "rxjs-es": "^5.0.0-beta.12"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
@@ -20,12 +25,8 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-latest": "^6.0.0",
     "babel-preset-stage-2": "^6.22.0",
-    "cross-env": "^3.0.0",
-    "css-loader": "^0.26.1",
-    "file-loader": "^0.10.0",
-    "vue-loader": "^11.1.4",
-    "vue-template-compiler": "^2.2.1",
-    "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.1"
+    "babel-register": "^6.24.0",
+    "babel-tape-runner": "^2.0.1",
+    "tape": "^4.6.3"
   }
 }
