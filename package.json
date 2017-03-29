@@ -1,6 +1,6 @@
 {
   "name": "overvuerx",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A library providing Vue applications with 'asynchronous-first' state management",
   "author": "mKondoJS",
   "main": "src/OverVue.js",
