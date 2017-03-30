@@ -57,7 +57,11 @@ export const commitUsername = store.dispatchAction(payload => ({
 ```
 In this example, commitUsername can be easily imported into any file requiring it and utilized in the same way one would use actions in any Flux-based state management library. 
 
-This is an example of how a mutate method will commit a dispatched action:
+### Commit mutations
+
+As in other Flux-based state management libraries, state is never directly effected by dispatched actions. Rather, actions commit mutators which mutate state and save the new state object in session storage, allowing it to persist through page reloads. This allows actions to perform complex asynchronous tasks without the risk of state being inappropriately changed. 
+
+This is an example of how a committed mutate method will handle a dispatched action:
 ```
 export default function mutate(state, action) {
   switch (action.type) {
