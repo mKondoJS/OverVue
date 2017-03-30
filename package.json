@@ -1,6 +1,6 @@
 {
   "name": "overvue",
-  "version": "1.0.8",
+  "version": "1.0.12",
   "description": "A library providing Vue applications with 'asynchronous-first' state management",
   "author": "mKondoJS",
   "license": "MIT",
@@ -12,6 +12,15 @@
     "url": "https://github.com/mKondoJS/OverVue/issues"
   },
   "homepage": "https://github.com/mKondoJS/OverVue#readme",
+   "keywords": [
+    "overvue",
+    "state management",
+    "observable",
+    "rx",
+    "rxjs",
+    "vue",
+    "vuex"
+  ],
   "scripts": {
     "test": "babel-tape-runner test/overVueTest.js"
   },
