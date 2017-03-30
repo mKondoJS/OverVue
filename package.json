@@ -13,6 +13,15 @@
     "url": "https://github.com/mKondoJS/OverVue/issues"
   },
   "homepage": "https://github.com/mKondoJS/OverVue#readme",
+   "keywords": [
+    "overvue",
+    "state management",
+    "observable",
+    "rx",
+    "rxjs",
+    "vue",
+    "vuex"
+  ],
   "scripts": {
     "build": "babel src -d build",
     "test": "babel-tape-runner test/overVueTest.js",
