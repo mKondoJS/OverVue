@@ -1,5 +1,5 @@
 {
-  "name": "overvue",
+  "name": "overvue-rx",
   "version": "1.0.12",
   "description": "A library providing Vue applications with 'asynchronous-first' state management",
   "author": "mKondoJS",
