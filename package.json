@@ -3,7 +3,7 @@
   "version": "1.0.9",
   "description": "A library providing Vue applications with 'asynchronous-first' state management",
   "author": "mKondoJS",
-  "main": "src/OverVue.js",
+  "main": "build/index.js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -14,7 +14,9 @@
   },
   "homepage": "https://github.com/mKondoJS/OverVue#readme",
   "scripts": {
-    "test": "babel-tape-runner test/overVueTest.js"
+    "build": "babel src -d build",
+    "test": "babel-tape-runner test/overVueTest.js",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "rxjs": "^5.2.0",

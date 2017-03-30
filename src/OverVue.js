@@ -1,4 +1,5 @@
-import webpack from 'webpack';
+/*import fs from 'fs';
+import webpack from 'webpack';*/
 import Rx from 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import applyMixin from './mixin';
