@@ -1,7 +1,7 @@
 # OverVue
 #### OverVue is a stream-based persistent state management library for Vue built on RxJS observables.
 
-While Vuex provides a robust option for handling state in Vue applications,  persistance requires 
+While Vuex provides a robust option for handling state in Vue applications,  persistence requires 
 third-party plugin support. The OverVue state management library includes persisted state out of the box.
 
 OverVue leverages an RxJS Observable stream to manage synchronous and asynchronous updates to state and easily integrates
