@@ -26,9 +26,9 @@ In your store file, import OverVue and connect it using the Vue.use() global met
 
 ```
 import Vue from 'vue';
-import overvue from 'overvue-rx';
+import { Overvue, Store } from 'overvue-rx';
 
-Vue.use(overvue);
+Vue.use(Overvue);
 ```
 Next, in the file containing your root Vue instantiation, pass your mutate methods into createStateStream and subscribe to the store. Be sure to import the relevant files and set the store as a property in your root Vue instantiation. This makes the store accessible in all components. 
 
