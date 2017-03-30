@@ -1,3 +1,3 @@
-import Overvue, { Store } from './Overvue';
+import Overvue, { Store } from './OverVue';
 
 module.exports = { Overvue, Store };
