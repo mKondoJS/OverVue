@@ -3,6 +3,7 @@
   "version": "1.0.12",
   "description": "A library providing Vue applications with 'asynchronous-first' state management",
   "author": "mKondoJS",
+  "main": "build/index.js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -22,7 +23,9 @@
     "vuex"
   ],
   "scripts": {
-    "test": "babel-tape-runner test/overVueTest.js"
+    "build": "babel src -d build",
+    "test": "babel-tape-runner test/overVueTest.js",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "rxjs": "^5.2.0",
@@ -36,6 +39,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.24.0",
     "babel-tape-runner": "^2.0.1",
-    "tape": "^4.6.3"
+    "tape": "^4.6.3",
+    "webpack": "^2.3.2"
   }
 }
