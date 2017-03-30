@@ -15,7 +15,7 @@ or submit pull requests in order to contribute to the ongoing evolution of OverV
 ### Getting Started
 
 ```
-npm install --save overVue
+npm install --save overvue-rx
 ```
 
 ### Create a central store
@@ -26,9 +26,9 @@ In your store file, import OverVue and connect it using the Vue.use() global met
 
 ```
 import Vue from 'vue';
-import OverVue from 'overVue';
+import overvue from 'overvue-rx';
 
-Vue.use(OverVue);
+Vue.use(overvue);
 ```
 Next, in the file containing your root Vue instantiation, pass your mutate methods into createStateStream and subscribe to the store. Be sure to import the relevant files and set the store as a property in your root Vue instantiation. This makes the store accessible in all components. 
 
