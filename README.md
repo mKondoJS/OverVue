@@ -71,7 +71,3 @@ export default function mutate(state, action) {
 };
 ```
 And that's it!
-
-
-
-
